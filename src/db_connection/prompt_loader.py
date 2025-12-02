@@ -1,0 +1,43 @@
+from db_connection.db_connect_pool import Database
+from vessel_info.vessel_info import extract_vessel_metadata
+from logger_config import logger
+
+
+def get_tenant_prompt(tenant):
+    db = Database("DB3")   # configs.noon_tenant_prompts
+    conn = db.get_conn()
+    cur = conn.cursor()
+
+    # Fetch STANDARD prompt (always)
+    cur.execute(f"""
+        SELECT prompt 
+        FROM {db.schema}.{db.table}
+        WHERE tenant = 'standard'
+        LIMIT 1;
+    """)
+    standard_prompt_row = cur.fetchone()
+    standard_prompt = standard_prompt_row[0] if standard_prompt_row else ""
+
+    # Fetch TENANT-specific prompt
+    tenant_prompt = ""
+    tenant_parsed_keys = ""
+
+    if tenant:
+        logger.info(f"Searching tenant in DB: {tenant}")
+
+        cur.execute(f"""
+            SELECT prompt, parsed_keys
+            FROM {db.schema}.{db.table}
+            WHERE tenant = %s
+            LIMIT 1;
+        """, (tenant,))
+        tenant_row = cur.fetchone()
+
+        if tenant_row:
+            tenant_prompt = tenant_row[0] or ""
+            tenant_parsed_keys = tenant_row[1] or ""
+
+    db.put_conn(conn)
+
+    return standard_prompt, tenant_prompt, tenant_parsed_keys
+

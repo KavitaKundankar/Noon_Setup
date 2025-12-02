@@ -1,0 +1,84 @@
+{
+  "tenant": "Tenant",
+  "subject": "Email_Subject",
+  "sender": "Sender_Email",
+
+  "vessel_name": "Vessel_Name",
+  "report_date_utc": "Report_Date_utc",
+  "ship_time_local": "Ship_Time_Local",
+
+  "position_latitude": "Position_Latitude",
+  "position_longitude": "Position_Longitude",
+
+  "voyage_number": "Voyage_Number",
+  "voyage_from": "Voyage_From",
+  "voyage_to": "Voyage_To",
+
+  "steaming_speed_AS_knots": "Steaming_Speed_AS_Knots",
+  "average_speed_MAS_knots": "Average_Speed_MAS_Knots",
+
+  "distance_run_nm": "Distance_Run_NM",
+  "total_distance_run_nm": "Total_Distance_Run_NM",
+  "distance_to_go_nm": "Distance_To_Go_NM",
+
+  "steaming_time_hours": "Steaming_Time_Hours",
+  "total_steaming_time_hours": "Total_Steaming_Time_Hours",
+
+  "main_engine_rpm": "Main_Engine_RPM",
+  "slip": "Propeller_Slip_Percentage",
+
+  "wind_beaufort_scale": "Wind_Beaufort_Scale",
+  "wind_direction_degrees_t": "Wind_Direction_Degrees_True",
+  "wind_direction_text": "Wind_Direction_Text",
+
+  "sea_height_meters": "Sea_Height_Meters",
+  "swell_height_meters": "Swell_Height_Meters",
+  "swell_direction_degrees_t": "Swell_Direction_Degrees_True",
+  "douglas_sea_state": "Douglas_Sea_State",
+
+  "remaining_on_board_hfo_in_mt": "ROB_HFO_MT",
+  "remaining_on_board_vlsfo_in_mt": "ROB_VLSFO_MT",
+  "remaining_on_board_vlsgo_in_mt": "ROB_VLSGO_MT",
+  "remaining_on_board_ulsgo_in_mt": "ROB_ULSGO_MT",
+
+  "remaining_on_board_mecyl_in_ltr": "ROB_ME_Cylinder_Oil_Liters",
+  "remaining_on_board_lsmecyl_in_ltr": "ROB_LS_ME_Cylinder_Oil_Liters",
+  "remaining_on_board_mecc_in_ltr": "ROB_ME_Crankcase_Oil_Liters",
+  "remaining_on_board_aecc_in_ltr": "ROB_AE_Crankcase_Oil_Liters",
+  "remaining_on_board_fw_in_mt": "ROB_FW_MT",
+
+  "consumption_hfo_in_mt": "Consumption_HFO_MT",
+  "consumption_hfo_main_engine_in_mt": "Consumption_HFO_ME_MT",
+  "consumption_hfo_auxiliary_engine_in_mt": "Consumption_HFO_AE_MT",
+  "consumption_hfo_other_in_mt": "Consumption_HFO_Other_MT",
+
+  "consumption_vlsfo_in_mt": "Consumption_VLSFO_MT",
+  "consumption_vlsfo_main_engine_in_mt": "Consumption_VLSFO_ME_MT",
+  "consumption_vlsfo_auxiliary_engine_in_mt": "Consumption_VLSFO_AE_MT",
+  "consumption_vlsfo_other_in_mt": "Consumption_VLSFO_Other_MT",
+
+  "consumption_vlsgo_in_mt": "Consumption_VLSGO_MT",
+  "consumption_vlsgo_main_engine_in_mt": "Consumption_VLSGO_ME_MT",
+  "consumption_vlsgo_auxiliary_engine_in_mt": "Consumption_VLSGO_AE_MT",
+  "consumption_vlsgo_other_in_mt": "Consumption_VLSGO_Other_MT",
+
+  "consumption_ulsgo_in_mt": "Consumption_ULSGO_MT",
+  "consumption_ulsgo_main_engine_in_mt": "Consumption_ULSGO_ME_MT",
+  "consumption_ulsgo_auxiliary_engine_in_mt": "Consumption_ULSGO_AE_MT",
+  "consumption_ulsgo_other_in_mt": "Consumption_ULSGO_Other_MT",
+
+  "consumption_mecyl_in_ltr": "Consumption_ME_Cylinder_Oil_Liters",
+  "consumption_lsmecyl_in_ltr": "Consumption_LS_ME_Cylinder_Oil_Liters",
+  "consumption_mecc_in_ltr": "Consumption_ME_Crankcase_Oil_Liters",
+  "consumption_aecc_in_ltr": "Consumption_AE_Crankcase_Oil_Liters",
+
+  "consumption_fw_in_mt": "Consumption_FW_MT",
+
+  "next_port_name": "Next_Port_Name",
+  "eta_next_port": "ETA_Next_Port",
+
+  "draft_forward": "Draft_Forward",
+  "draft_after": "Draft_After",
+
+  "remarks": "Remarks"
+}

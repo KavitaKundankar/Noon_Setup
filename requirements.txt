@@ -1,0 +1,37 @@
+pika
+datetime
+python-dotenv
+pandas
+yaml
+logging
+dotenv
+google-generativeai
+psycopg2-binary
+
+
+
+# noon parsing project flow will be 
+# 1. take input data 
+# 2. parse through llm
+# 3. parsed output mapp with standard keys 
+# 4. processed output 
+
+# - correct way to take input from 1. rabbit 2. text_file
+# both input contain mail body 
+# - all the vessal tracking and process tracking will be done by vessal imo 
+# - we need db setup singleton pool setup 
+#     - to fetch vessal Imo from db
+#     - to store configurations
+#     - and to store parsed/mapped result
+# - then it will parse through gemini llm
+#     - Standard prompt for all vessal 
+#     - and for every tenant we store keys json in .txt file so we can create same output keys everytime
+#     - we send to llm --> standard_ptompt + vessal/tenant prompt + parse_key_json + mail_body
+#     - parsed output will generated
+#     - for any value key is not given then it will generate new key for that
+#     - and again new generated key will add to the parse_key_json
+# - then parsed_output will go for mapping 
+#     - for mapping we will store { generated_key : mapping_key } through this way we will mapp all keys with standard parameters
+#     - if mapping key not found then all those unmapped keys will append after the mapped keys at end 
+# - setup monitoring and logging for all path 
+# - standard prompt will applicatble for all new vessal onboarding
