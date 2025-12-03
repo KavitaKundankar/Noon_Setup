@@ -4,11 +4,11 @@
   "sender": "Sender_Email",
 
   "vessel_name": "Vessel_Name",
-  "report_date_utc": "Report_Date_Time",
+  "report_date_utc": "Report_Date_utc",
   "ship_time_local": "Ship_Time_Local",
 
-  "position_latitude": "Latitude",
-  "position_longitude": "Longitude",
+  "position_latitude": "Position_Latitude",
+  "position_longitude": "Position_Longitude",
 
   "voyage_number": "Voyage_Number",
   "voyage_from": "Voyage_From",

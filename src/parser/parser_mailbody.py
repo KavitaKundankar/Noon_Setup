@@ -64,4 +64,4 @@ class NoonReportParser:
         with open(filename, "w") as f:
             json.dump(json.loads(data), f, indent=4)
 
-        logger.info(f"Output saved: {filename}")
+        logger.info(f"Parsed output saved: {filename}")

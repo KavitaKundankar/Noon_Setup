@@ -3,44 +3,60 @@ import json
 from logger_config import logger
 from inbound.base import InboundSource
 
-
 class RabbitMQInbound(InboundSource):
 
     REQUIRED_KEYS = ["sender", "tenant", "subject", "body"]
 
-    def __init__(self, cfg: dict):
+    def __init__(self, cfg: dict, parser=None, mapper=None):
         self.host = cfg["host"]
         self.port = cfg["port"]
         self.queue = cfg["queue"]
         self.username = cfg["username"]
         self.password = cfg["password"]
         self.vhost = cfg.get("vhost", "/")
-        self.message = None
+
+        # Inject parser + mapper
+        self.parser = parser
+        self.mapper = mapper
+
+        self.max_messages = 1
+        self.current_count = 0
 
     def _process_message(self, msg):
         return {k: msg.get(k) for k in self.REQUIRED_KEYS}
 
     def _callback(self, ch, method, properties, body):
-        # Parse message
         try:
-            msg = json.loads(body.decode("utf-8"))
+            raw_msg = json.loads(body.decode("utf-8"))
         except:
-            msg = {"raw": body.decode("utf-8")}
+            raw_msg = {"raw": body.decode("utf-8")}
 
-        processed = self._process_message(msg)
+        processed_msg = self._process_message(raw_msg)
+        print(raw_msg)
+        logger.info(f"Received message for tenant {processed_msg['tenant']}")
 
-        logger.info(f"Message received from RabbitMQ for tenant {processed['tenant']}")
+        mail_body = processed_msg["body"]
+        tenant = processed_msg["tenant"]
 
-        # Save last message only (optional — for returning)
-        self.message = processed
+        try:
+            parsed = self.parser.parse(mail_body, tenant)
+            mapped = self.mapper.map(parsed, tenant)
 
-        # ACKNOWLEDGE MESSAGE → avoids message loss
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+            logger.info(f"Message processed for tenant {tenant}")
 
-        # DO NOT stop consuming (removed)
-        # ch.stop_consuming()
+            # Only ACK if everything succeeded
+            # ch.basic_ack(delivery_tag=method.delivery_tag)
 
-    def fetch(self):
+        except Exception as e:
+            logger.error(f"Error processing message: {e}")
+            # ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+        
+        self.current_count += 1
+        if self.current_count >= self.max_messages:
+            logger.info(f"Reached limit of {self.max_messages} messages. Stopping consumer.")
+            ch.stop_consuming()
+
+    def start_worker(self):
         credentials = pika.PlainCredentials(self.username, self.password)
 
         connection = pika.BlockingConnection(
@@ -55,22 +71,17 @@ class RabbitMQInbound(InboundSource):
         channel = connection.channel()
         channel.queue_declare(queue=self.queue, durable=True)
 
-        # Start continuous consumption
         channel.basic_consume(
             queue=self.queue,
             on_message_callback=self._callback,
-            auto_ack=False    # Because we ACK manually
+            auto_ack=False
         )
 
-        logger.info(f"RabbitMQ consumer started on queue '{self.queue}'...")
+        logger.info(f" RabbitMQ Worker started on queue: {self.queue}")
+        channel.start_consuming()
 
-        # Infinite listening loop
-        try:
-            channel.start_consuming()
-        except KeyboardInterrupt:
-            logger.info("Consumer stopped manually.")
-            channel.stop_consuming()
 
-        connection.close()
+    def fetch(self):
+        # self.start_worker()
+        pass
 
-        return self.message   # returns last message processed

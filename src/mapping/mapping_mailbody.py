@@ -61,7 +61,7 @@ class NoonReportMapper:
             with open(filename, "w") as f:
                 json.dump(data, f, indent=4)
 
-            logger.info(f"Output saved at: {filename}")
+            logger.info(f"Mapped output saved at: {filename}")
 
         except Exception as e:
             logger.error(f"Error saving mapped file: {str(e)}")
