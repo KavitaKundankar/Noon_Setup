@@ -11,6 +11,26 @@ from mapping.mapping_mailbody import NoonReportMapper
 
 load_dotenv()
 
+def main():
+    api_key = os.getenv("GEMINI_API_KEY")
+
+    rabbit_cfg = load_inbound_credentials()
+
+    parser = NoonReportParser(api_key=api_key)
+    mapper = NoonReportMapper()
+
+    worker = RabbitMQInbound(
+        rabbit_cfg,
+        parser=parser,
+        mapper=mapper
+    )
+
+    worker.start_worker()
+
+if __name__ == "__main__":
+    main()
+
+
 
 # def main():
 
@@ -44,22 +64,3 @@ load_dotenv()
 # if __name__ == "__main__":
 #     main()
 
-
-def main():
-    api_key = os.getenv("GEMINI_API_KEY")
-
-    rabbit_cfg = load_inbound_credentials()
-
-    parser = NoonReportParser(api_key=api_key)
-    mapper = NoonReportMapper()
-
-    worker = RabbitMQInbound(
-        rabbit_cfg,
-        parser=parser,
-        mapper=mapper
-    )
-
-    worker.start_worker()
-
-if __name__ == "__main__":
-    main()

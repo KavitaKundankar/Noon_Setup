@@ -19,7 +19,7 @@ class RabbitMQInbound(InboundSource):
         self.parser = parser
         self.mapper = mapper
 
-        self.max_messages = 1
+        self.max_messages = 2
         self.current_count = 0
 
     def _process_message(self, msg):
@@ -28,11 +28,13 @@ class RabbitMQInbound(InboundSource):
     def _callback(self, ch, method, properties, body):
         try:
             raw_msg = json.loads(body.decode("utf-8"))
-        except:
-            raw_msg = {"raw": body.decode("utf-8")}
+        except Exception as e:
+            logger.error(f"Input message is not valid JSON: {e}")
+            return
+            
 
         processed_msg = self._process_message(raw_msg)
-        print(raw_msg)
+        # print(raw_msg)
         logger.info(f"Received message for tenant {processed_msg['tenant']}")
 
         mail_body = processed_msg["body"]
