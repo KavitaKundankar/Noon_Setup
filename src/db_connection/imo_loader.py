@@ -19,9 +19,9 @@ def get_imo(message):
         logger.info(f"Searching IMO in DB: {imo}")
 
         query = f"""
-            SELECT imo, mappingname, name
+            SELECT vessel_imo, vessel
             FROM {db.schema}.{db.table}
-            WHERE imo = %s
+            WHERE vessel_imo = %s
             LIMIT 1;
         """
         cur.execute(query, (imo,))
@@ -31,9 +31,9 @@ def get_imo(message):
         logger.info(f"Searching Vessel Name in DB: {vessel_name}")
 
         query = f"""
-            SELECT imo, mappingname, name
+            SELECT vessel_imo, vessel
             FROM {db.schema}.{db.table}
-            WHERE LOWER(name) = LOWER(%s)
+            WHERE LOWER(vessel) = LOWER(%s)
             LIMIT 1;
         """
         cur.execute(query, (vessel_name,))
@@ -43,8 +43,8 @@ def get_imo(message):
 
 
     if row:
-        db_imo, mappingname, name = row
-        logger.info(f"Matched IMO: {db_imo}, Vessel: {name}, Mapping: {mappingname}")
+        db_imo,  name = row
+        logger.info(f"Matched IMO: {db_imo}, Vessel: {name}")
         return db_imo
 
     logger.warning("No IMO match found in DB")

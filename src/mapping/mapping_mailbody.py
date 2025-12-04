@@ -17,7 +17,7 @@ class NoonReportMapper:
 
             if not os.path.exists(path):
                 logger.error(f"Mapping file not found for tenant: {tenant}")
-                return {}
+                return
 
             with open(path, "r") as f:
                 standard_data = json.load(f)

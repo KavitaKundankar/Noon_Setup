@@ -1,0 +1,112 @@
+{
+  "vessel_name": "Vessel_Name",
+  "imo_number": "IMO_Number",
+  "call_sign": "Call_Sign",
+  "voyage_number": "Voyage_Number",
+  "report_type": "Report_Type",
+  "format_version": "Format_Version",
+  "load_condition": "Vessel_Condition",
+
+  "time": "Report_Date_Time",
+
+  "position_latitude": "Latitude",
+  "position_longitude": "Longitude",
+
+  "present_port": "Next_Port",
+  "status": "Status",
+
+  "etd_utc": "ETD",
+  "eta_utc": "ETA_Next_Port",
+
+  "time_slr": "ME_Running_Hrs",
+  "distance_slr": "Distance",
+
+  "destination_port":"Destination_port",
+
+  "speed_instruction": "Speed_Instruction",
+
+  "noon_fuel_hsfo_rob": "Remaining_On_Board_HFO_In_MT",
+  "noon_fuel_hsfo_me_cons": "Total_HFOME_Consumed_In_MT",
+  "noon_fuel_hsfo_ae_cons": "Total_HFOAE_Consumed_In_MT",
+  "noon_fuel_hsfo_boiler_cons": "Total_HFOBLR_Consumed_In_MT",
+  "noon_fuel_hsfo_total_cons": "Total_HFO_Consumed_In_MT",
+
+  "noon_fuel_vlsfo_rmk_rob": "Remaining_On_Board_VLSFO(RME-RMK)_In_MT",
+  "noon_fuel_vlsfo_rmk_me_cons": "Total_VLSFOME(RME-RMK)_Consumed_In_MT",
+  "noon_fuel_vlsfo_rmk_ae_cons": "Total_VLSFOAE(RME-RMK)_Consumed_In_MT",
+  "noon_fuel_vlsfo_rmk_boiler_cons": "Total_VLSFOBLR(RME-RMK)_Consumed_In_MT",
+  "noon_fuel_vlsfo_rmk_total_cons": "Total_VLSFO(RME-RMK)_Consumed_In_MT",
+
+  "noon_fuel_vlsfo_rmd_rob": "Remaining_On_Board_VLSFO_In_MT",
+  "noon_fuel_vlsfo_rmd_me_cons": "Total_VLSFOME_Consumed_In_MT",
+  "noon_fuel_vlsfo_rmd_ae_cons": "Total_VLSFOAE_Consumed_In_MT",
+  "noon_fuel_vlsfo_rmd_boiler_cons": "Total_VLSFOBLR_Consumed_In_MT",
+  "noon_fuel_vlsfo_rmd_total_cons": "Total_VLSFO_Consumed_In_MT",
+
+  "noon_fuel_ulsfo_rob": "Remaining_On_Board_ULSFO_In_MT",
+  "noon_fuel_ulsfo_me_cons": "Total_ULSFOME_Consumed_In_MT",
+  "noon_fuel_ulsfo_ae_cons": "Total_ULSFOAE_Consumed_In_MT",
+  "noon_fuel_ulsfo_boiler_cons": "Total_ULSFOBLR_Consumed_In_MT",
+  "noon_fuel_ulsfo_total_cons": "Total_ULSFO_Consumed_In_MT",
+
+  "noon_fuel_msdo_rob": "Remaining_On_Board_MDO_In_MT",
+  "noon_fuel_msdo_me_cons": "Total_MDOME_Consumed_In_MT",
+  "noon_fuel_msdo_ae_cons": "Total_MDOAE_Consumed_In_MT",
+  "noon_fuel_msdo_boiler_cons": "Total_MDOBLR_Consumed_In_MT",
+  "noon_fuel_msdo_total_cons": "Total_MDO_Consumed_In_MT",
+
+  "noon_fuel_lsdo_rob": "Remaining_On_Board_LSMDO_In_MT",
+  "noon_fuel_lsdo_me_cons": "Total_LSMDOME_Consumed_In_MT",
+  "noon_fuel_lsdo_ae_cons": "Total_LSMDOAE_Consumed_In_MT",
+  "noon_fuel_lsdo_boiler_cons": "Total_LSMDOBLR_Consumed_In_MT",
+  "noon_fuel_lsdo_total_cons": "Total_LSMDO_Consumed_In_MT",
+
+  "noon_fuel_msgo_rob": "Remaining_On_Board_MGO_In_MT",
+  "noon_fuel_msgo_me_cons": "Total_MGOME_Consumed_In_MT",
+  "noon_fuel_msgo_ae_cons": "Total_MGOAE_Consumed_In_MT",
+  "noon_fuel_msgo_boiler_cons": "Total_MGOBLR_Consumed_In_MT",
+  "noon_fuel_msgo_total_cons": "Total_MGO_Consumed_In_MT",
+
+  "noon_fuel_lsgo_rob": "Remaining_On_Board_LSMGO_In_MT",
+  "noon_fuel_lsgo_me_cons": "Total_LSMGOME_Consumed_In_MT",
+  "noon_fuel_lsgo_ae_cons": "Total_LSMGOAE_Consumed_In_MT",
+  "noon_fuel_lsgo_boiler_cons": "Total_LSMGOBLR_Consumed_In_MT",
+  "noon_fuel_lsgo_total_cons": "Total_LSMGO_Consumed_In_MT",
+
+  "noon_fuel_bioblend_rob": "noon_fuel_bioblend_rob",
+  "noon_fuel_bioblend_me_cons": "noon_fuel_bioblend_me_cons",
+  "noon_fuel_bioblend_ae_cons": "noon_fuel_bioblend_ae_cons",
+  "noon_fuel_bioblend_boiler_cons": "noon_fuel_bioblend_boiler_cons",
+  "noon_fuel_bioblend_total_cons": "noon_fuel_bioblend_total_cons",
+
+  "order_consumption_fo": "Order_Consumption",
+  "order_consumption_go": "Total_GO_Consumed_In_MT",
+  "order_consumption_do": "Total_DO_Consumed_In_MT",
+  "order_consumption_lng": "Total_LNG_Consumed_In_MT",
+
+  "set_rpm": "ME_RPM_Bridge_Command",
+
+  "average_speed": "Avg_Speed",
+  "average_rpm": "Avg_RPM",
+  "average_percent_mcr": "Avg_MCR",
+  "average_m_e_power": "Avg_ME_Power",
+  "average_slip": "Avg_Slip",
+
+  "draft_fore": "Draft_FWD",
+  "draft_aft": "Draft_AFT",
+
+  "steaming_distance_log": "Distance",
+  "average_speed_log": "Avg_Speed",
+
+  "wind_speed": "Wind_Speed",
+  "wind_beaufort_number": "Wind_Beaufort_Number",
+  "wind_direction": "Wind_True_Direction",
+
+  "visibility": "visibility",
+  "wave_height": "wave_height",
+  "wave_direction": "wave_direction",
+  "swell_height": "Swell_Height",
+  "swell_direction": "Swell_Direction",
+
+  "remarks": "Remarks"
+}

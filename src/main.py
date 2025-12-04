@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from logger_config import logger
 
 from db_connection.rabbit_inbound_loader import load_inbound_credentials
-from db_connection.imo_loader import get_imo
 from inbound.rabbit_inbound import RabbitMQInbound
 from parser.parser_mailbody import NoonReportParser
 from mapping.mapping_mailbody import NoonReportMapper

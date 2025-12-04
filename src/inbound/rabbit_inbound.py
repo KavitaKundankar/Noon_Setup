@@ -2,6 +2,7 @@ import pika
 import json
 from logger_config import logger
 from inbound.base import InboundSource
+from db_connection.imo_loader import get_imo
 
 class RabbitMQInbound(InboundSource):
 
@@ -15,7 +16,6 @@ class RabbitMQInbound(InboundSource):
         self.password = cfg["password"]
         self.vhost = cfg.get("vhost", "/")
 
-        # Inject parser + mapper
         self.parser = parser
         self.mapper = mapper
 
@@ -29,34 +29,36 @@ class RabbitMQInbound(InboundSource):
         try:
             raw_msg = json.loads(body.decode("utf-8"))
         except Exception as e:
-            logger.error(f"Input message is not valid JSON: {e}")
+            logger.error(f"Invalid JSON: {e}")
+            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
             return
-            
 
         processed_msg = self._process_message(raw_msg)
-        # print(raw_msg)
         logger.info(f"Received message for tenant {processed_msg['tenant']}")
 
         mail_body = processed_msg["body"]
         tenant = processed_msg["tenant"]
 
         try:
+            vessel_imo = get_imo(mail_body)
+            print(vessel_imo)
+            print(mail_body)
             parsed = self.parser.parse(mail_body, tenant)
             mapped = self.mapper.map(parsed, tenant)
 
             logger.info(f"Message processed for tenant {tenant}")
-
-            # Only ACK if everything succeeded
-            # ch.basic_ack(delivery_tag=method.delivery_tag)
+            ch.basic_ack(delivery_tag=method.delivery_tag)
 
         except Exception as e:
             logger.error(f"Error processing message: {e}")
-            # ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-        
+            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+
+        # Count messages
         self.current_count += 1
         if self.current_count >= self.max_messages:
             logger.info(f"Reached limit of {self.max_messages} messages. Stopping consumer.")
-            ch.stop_consuming()
+            # Use safe thread callback for stopping
+            ch.connection.add_callback_threadsafe(ch.stop_consuming)
 
     def start_worker(self):
         credentials = pika.PlainCredentials(self.username, self.password)
@@ -67,11 +69,16 @@ class RabbitMQInbound(InboundSource):
                 port=self.port,
                 virtual_host=self.vhost,
                 credentials=credentials,
+                heartbeat=60,                    # prevents disconnects
+                blocked_connection_timeout=300   # safe long parsing
             )
         )
 
         channel = connection.channel()
         channel.queue_declare(queue=self.queue, durable=True)
+
+        # prefetch to control load
+        channel.basic_qos(prefetch_count=1)
 
         channel.basic_consume(
             queue=self.queue,
@@ -79,11 +86,23 @@ class RabbitMQInbound(InboundSource):
             auto_ack=False
         )
 
-        logger.info(f" RabbitMQ Worker started on queue: {self.queue}")
-        channel.start_consuming()
+        logger.info(f"RabbitMQ Worker started on queue: {self.queue}")
 
+        try:
+            channel.start_consuming()
+        except Exception as e:
+            logger.error(f"Error while consuming: {e}")
+        finally:
+            try:
+                if channel.is_open:
+                    channel.close()
+            except: 
+                pass
+            try:
+                if connection.is_open:
+                    connection.close()
+            except:
+                pass
 
     def fetch(self):
-        # self.start_worker()
         pass
-
