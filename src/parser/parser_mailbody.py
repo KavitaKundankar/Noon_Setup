@@ -6,6 +6,8 @@ from datetime import datetime
 from logger_config import logger
 from config import BASE_DIR
 from db_connection.prompt_loader import get_tenant_prompt
+import json
+import toon_python as toon
 
 class NoonReportParser:
 
@@ -16,9 +18,9 @@ class NoonReportParser:
         self.model = genai.GenerativeModel("models/gemini-2.5-flash-lite")
         
 
-    def parse(self, body, tenant):
+    def parse(self, body, tenant, imo):
 
-        standard_prompt, tenant_prompt, parsed_keys = get_tenant_prompt(tenant)
+        standard_prompt, tenant_prompt, parsed_keys, vessel_prompt, vessel_keys = get_tenant_prompt(tenant, imo)
 
         # Build final prompt safely
         final_prompt = ""
@@ -30,9 +32,18 @@ class NoonReportParser:
             final_prompt += f"{tenant_prompt}\n\n"
 
         if parsed_keys:
-            final_prompt += f"{parsed_keys}\n\n"
+            result1 = toon.encode(parsed_keys)
+            final_prompt += f"{result1}\n\n"
 
-        final_prompt += f"EMAIL CONTENT:\n{body}"
+        if vessel_keys:
+            final_prompt += f"{vessel_keys}\n\n"
+
+        if vessel_prompt:
+            final_prompt += f"{vessel_prompt}\n\n"
+
+
+        result1 = toon.encode(body)
+        final_prompt += f"EMAIL CONTENT:\n{result1}"
 
         response = self.model.generate_content(final_prompt)
         logger.info(f"Token usage: {response.usage_metadata}")

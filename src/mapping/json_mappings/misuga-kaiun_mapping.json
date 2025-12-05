@@ -171,6 +171,23 @@
   "swell_height": "Swell_Height",
   "swell_direction": "Swell_Direction", 
 
-  "report_create_time" : "Report_Create_Time"
+  "report_create_time" : "Report_Create_Time",
+
+  "time_at_commencement_of_anchoring": "Time_Commencement_of_Anchoring",
+  "time_at_completion_of_anchoring": "Time_Completion_of_Anchoring",
+  "fo_rob_at_commencement_of_anchoring_sulphur_max0.5" : "Remaining_On_Board_VLSFO_In_MT_commencemnt_of_Anchoring",
+  "fo_rob_at_commencement_of_anchoring_ttl_TOTAL" : "Remaining_On_Board_Total_In_MT_commencemnt_of_Anchoring",
+  "fo_rob_at_completion_of_anchoring_sulphur_max0.5" : "Remaining_On_Board_VLSFO_In_MT_Completion_of_Anchoring",
+  "fo_rob_at_completion_of_anchoring_ttl_TOTAL" : "Remaining_On_Board_Total_In_MT_Completion_of_Anchoring",
+  "go_rob_at_commencement_of_anchoring_sulphur_max0.1": "Remaining_On_Board_LSMGO_In_MT_Commencement_of_Anchoring",
+  "go_rob_at_commencement_of_anchoring_ttl_TOTAL" : "Total_GO_Remaining_On_Board_In_MT_Commencement_of_Anchoring",
+  "go_rob_at_completion_of_anchoring_sulphur_max0.1": "Remaining_On_Board_LSMGO_In_MT_Completion_of_Anchoring",
+  "go_rob_at_completion_of_anchoring_ttl_TOTAL":"Total_GO_Remaining_On_Board_In_MT_Completion_of_Anchoring",
+  "do_rob_at_commencement_of_anchoring_sulphur_max0.1" : "Remaining_On_Board_LSMDO_In_MT_Commencement_of_Anchoring",
+  "do_rob_at_commencement_of_anchoring_ttl_TOTAL" : "Total_DO_Remaining_On_Board_In_MT_Commencement_of_Anchoring",
+  "do_rob_at_completion_of_anchoring_sulphur_max0.1":"Remaining_On_Board_LSMDO_In_MT_Completion_of_Anchoring",
+  "do_rob_at_completion_of_anchoring_ttl_TOTAL" : "Total_DO_Remaining_On_Board_In_MT_Completion_of_Anchoring"
+
+
 
 }

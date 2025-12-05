@@ -43,7 +43,7 @@ class RabbitMQInbound(InboundSource):
             vessel_imo = get_imo(mail_body)
             print(vessel_imo)
             print(mail_body)
-            parsed = self.parser.parse(mail_body, tenant)
+            parsed = self.parser.parse(mail_body, tenant, vessel_imo)
             mapped = self.mapper.map(parsed, tenant)
 
             logger.info(f"Message processed for tenant {tenant}")

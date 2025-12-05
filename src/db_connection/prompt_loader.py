@@ -3,8 +3,9 @@ from vessel_info.vessel_info import extract_vessel_metadata
 from logger_config import logger
 
 
-def get_tenant_prompt(tenant):
+def get_tenant_prompt(tenant, imo):
     db = Database("DB3")   # configs.noon_tenant_prompts
+    db2 = Database("DB2")
     conn = db.get_conn()
     cur = conn.cursor()
 
@@ -36,8 +37,23 @@ def get_tenant_prompt(tenant):
         if tenant_row:
             tenant_prompt = tenant_row[0] or ""
             tenant_parsed_keys = tenant_row[1] or ""
+    
+    if imo : 
+        logger.info(f"Searching imo prompt in DB: {imo}")
+
+        cur.execute(f"""
+            SELECT vessel_prompt, vessel_keys
+            FROM {db2.schema}.{db2.table}
+            WHERE vessel_imo = %s
+            LIMIT 1;
+        """, (imo,))
+        imo_row = cur.fetchone()
+
+        if imo_row:
+            vessel_prompt = imo_row[0] or ""
+            vessel_keys = imo_row[1] or ""
 
     db.put_conn(conn)
 
-    return standard_prompt, tenant_prompt, tenant_parsed_keys
+    return standard_prompt, tenant_prompt, tenant_parsed_keys, vessel_prompt, vessel_keys
 
