@@ -45,7 +45,7 @@ def get_imo(message):
     if row:
         db_imo,  name = row
         logger.info(f"Matched IMO: {db_imo}, Vessel: {name}")
-        return db_imo
+        return db_imo, name
 
     logger.warning("No IMO match found in DB")
     return None

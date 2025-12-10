@@ -10,14 +10,14 @@ class NoonReportMapper:
     def __init__(self):
         pass
 
-    def map(self, parsed_mail: dict, tenant: str):
+    def map(self, parsed_mail: dict, tenant: str, imo : str, name : str):
 
         try:
             path = os.path.join(BASE_DIR, "mapping","json_mappings", f"{tenant}_mapping.json")
 
             if not os.path.exists(path):
                 logger.error(f"Mapping file not found for tenant: {tenant}")
-                return
+                return {}
 
             with open(path, "r") as f:
                 standard_data = json.load(f)
@@ -40,12 +40,12 @@ class NoonReportMapper:
 
             self.save(final_mapping, tenant)
 
-            logger.info(f"Mapping done for tenant : {tenant}")
+            logger.info(f"Mapping done for tenant : '{tenant}',  IMO : '{imo}' vessel : '{name}'")
             
             return final_mapping
 
         except Exception as e:
-            logger.error(f"Error in mapping: {str(e)}")
+            logger.error(f"Error in mapping. No mapping was saved for tenant : '{tenant}', IMO : '{imo}', vessel : '{name}' : {e}")
             return {}
 
     def save(self, data: dict, tenant: str):
@@ -61,7 +61,7 @@ class NoonReportMapper:
             with open(filename, "w") as f:
                 json.dump(data, f, indent=4)
 
-            logger.info(f"Mapped output saved at: {filename}")
+            logger.info(f"Output saved at: {filename}")
 
         except Exception as e:
             logger.error(f"Error saving mapped file: {str(e)}")

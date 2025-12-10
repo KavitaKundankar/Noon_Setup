@@ -19,7 +19,7 @@ class RabbitMQInbound(InboundSource):
         self.parser = parser
         self.mapper = mapper
 
-        self.max_messages = 2
+        self.max_messages = 10
         self.current_count = 0
 
     def _process_message(self, msg):
@@ -40,11 +40,11 @@ class RabbitMQInbound(InboundSource):
         tenant = processed_msg["tenant"]
 
         try:
-            vessel_imo = get_imo(mail_body)
+            vessel_imo, name = get_imo(mail_body)
             print(vessel_imo)
             print(mail_body)
             parsed = self.parser.parse(mail_body, tenant, vessel_imo)
-            mapped = self.mapper.map(parsed, tenant)
+            mapped = self.mapper.map(parsed, tenant, vessel_imo, name)
 
             logger.info(f"Message processed for tenant {tenant}")
             ch.basic_ack(delivery_tag=method.delivery_tag)

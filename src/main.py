@@ -31,6 +31,24 @@ if __name__ == "__main__":
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def main():
 
 #     api_key = os.getenv("GEMINI_API_KEY")

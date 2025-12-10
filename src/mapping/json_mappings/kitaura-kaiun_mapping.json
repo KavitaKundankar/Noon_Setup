@@ -97,6 +97,7 @@
 
   "steaming_distance_log": "Distance",
   "average_speed_log": "Avg_Speed",
+  "order_speed" : "Order_Speed",
 
   "wind_speed": "Wind_Speed",
   "wind_beaufort_number": "Wind_Beaufort_Number",
@@ -108,5 +109,24 @@
   "swell_height": "Swell_Height",
   "swell_direction": "Swell_Direction",
 
-  "remarks": "Remarks"
+  "remarks": "Remarks",
+
+  "destination_port_name" : "Final_Destination_Port",
+  "destination_port_code" : "Final_Destination_Port_Code",
+  "requested_arrival_margin" : "Requested_Arrival_Margin",
+  "rpm_range": "Rpm_Range",
+  "unusable_mcr_range_1st" : "Unusable_MCR_Range_1St",
+  "unusable_mcr_range_2nd": "Unusable_MCR_Range_2nd",
+  "unusable_rpm_range_1st" : "Unusable_RPM_Range_1St",
+  "unusable_rpm_range_2nd": "Unusable_RPM_Range_2nd",
+  "mcr_range" : "Mcr_Range",
+  "primary_cargo" : "Primary_Cargo",
+  "secondary_cargo" : "Secondary_Cargo",
+  "cargo_on_deck" : "Cargo_On_Deck",
+  "is_scrubber_equipped": "IS_Scrubber_Equipped",
+  "gm" : "GM",
+  "fuel_in_open_ocean":"Fuel_In_Open_Ocean",
+  "fuel_in_eca":"Fuel_In_ECA",
+  "winter_zone_sailing" : "Sailing_In_Winter_Zone"
+ 
 }

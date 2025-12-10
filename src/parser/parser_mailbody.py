@@ -22,7 +22,7 @@ class NoonReportParser:
 
         standard_prompt, tenant_prompt, parsed_keys, vessel_prompt, vessel_keys = get_tenant_prompt(tenant, imo)
 
-        # Build final prompt safely
+        # Build final prompt
         final_prompt = ""
 
         if standard_prompt:
@@ -62,7 +62,7 @@ class NoonReportParser:
         return parsed_mail
 
     def save(self, data, tenant):
-        # Ensure output directory exists
+ 
         output_dir = os.path.join(BASE_DIR, "parser/parsed_outputs")
         os.makedirs(output_dir, exist_ok=True)
 

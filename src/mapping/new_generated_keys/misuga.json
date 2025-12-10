@@ -1,17 +1,28 @@
 {
   "position_at_completion_of_anchoring_latitude": "34-52.9N",
   "position_at_completion_of_anchoring_longitude": "136-42.5E",
-  "fo_rob_at_commencement_of_anchoring_sulphur_max0.5": "258.69",
-  "fo_rob_at_commencement_of_anchoring_ttl_TOTAL": "258.69",
-  "fo_rob_at_completion_of_anchoring_sulphur_max0.5": "217.85",
-  "fo_rob_at_completion_of_anchoring_ttl_TOTAL": "217.85",
-  "go_rob_at_commencement_of_anchoring_sulphur_max0.1": "181.40",
-  "go_rob_at_commencement_of_anchoring_ttl_TOTAL": "181.40",
-  "go_rob_at_completion_of_anchoring_sulphur_max0.1": "180.00",
-  "go_rob_at_completion_of_anchoring_ttl_TOTAL": "180.00",
-  "do_rob_at_commencement_of_anchoring_sulphur_max0.1": "0",
-  "do_rob_at_commencement_of_anchoring_ttl_TOTAL": "0",
-  "do_rob_at_completion_of_anchoring_sulphur_max0.1": "0",
-  "do_rob_at_completion_of_anchoring_ttl_TOTAL": "0",
-  "remark_vessel_shifting_to_yokkaichi_wharf": "Vessel shifting to Yokkaichi Wharf."
+
+  "speed_instruction_other": null,
+  "wind_relative_direction": "N",
+  "all_weather_precaution_taken_as_per_company_guidelines": true,
+  "vessel_rolling_pitching": "slight to moderate",
+  "breeze": "gentle",
+  "sea": "moderate",
+  "waves": "NNW / 2.2 mtrs",
+  "swell": "NNE / 2.0 mtrs",
+  "adverse_current": "N",
+  "density_vlsfo": "0.891",
+  "density_lsmgo": "0.85",
+  "vessel_proceeding_with_mcr": "45%",
+  "as_per_charterer_instruction": true,
+  "me_tc_rpm_no2": null,
+  "me_tc_exh_temp_in_no2": null,
+  "me_tc_exh_temp_out_no2": null,
+  "me_system_oil_rob_at_noon": "19100Ltrs",
+  "ge_system_oil_rob_at_noon": "1500Ltrs",
+  "displacement": "63447.6MT",
+  "total_steaming_distance": "241NM",
+  "total_steaming_time": "21:00"
 }
+
+
