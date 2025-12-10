@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 from logger_config import logger
 from config import BASE_DIR
+from db_connection.mapping_loader import get_standard_keys
 
 
 class NoonReportMapper:
@@ -13,17 +14,12 @@ class NoonReportMapper:
     def map(self, parsed_mail: dict, tenant: str, imo : str, name : str):
 
         try:
-            path = os.path.join(BASE_DIR, "mapping","json_mappings", f"{tenant}_mapping.json")
-
-            if not os.path.exists(path):
-                logger.error(f"Mapping file not found for tenant: {tenant}")
-                return {}
-
-            with open(path, "r") as f:
-                standard_data = json.load(f)
-
             final_mapping = {}
             unmapped={}
+            standard_data = {}
+
+            standard_data = get_standard_keys(tenant)
+
 
             # Perform mapping
             for key, value in parsed_mail.items():
@@ -65,3 +61,27 @@ class NoonReportMapper:
 
         except Exception as e:
             logger.error(f"Error saving mapped file: {str(e)}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# path = os.path.join(BASE_DIR, "mapping","json_mappings", f"{tenant}_mapping.json")
+
+# if not os.path.exists(path):
+#     logger.error(f"Mapping file not found for tenant: {tenant}")
+#     return {}
+
+# with open(path, "r") as f:
+#     standard_data = json.load(f)

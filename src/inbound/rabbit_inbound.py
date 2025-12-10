@@ -19,7 +19,7 @@ class RabbitMQInbound(InboundSource):
         self.parser = parser
         self.mapper = mapper
 
-        self.max_messages = 10
+        self.max_messages = 5
         self.current_count = 0
 
     def _process_message(self, msg):
