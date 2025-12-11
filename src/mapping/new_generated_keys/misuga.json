@@ -1,7 +1,6 @@
 {
   "position_at_completion_of_anchoring_latitude": "34-52.9N",
   "position_at_completion_of_anchoring_longitude": "136-42.5E",
-
   "speed_instruction_other": null,
   "wind_relative_direction": "N",
   "all_weather_precaution_taken_as_per_company_guidelines": true,
@@ -90,8 +89,6 @@
   "`boiler_go_consumption_from_last_report_sulphur_ttl`": "0",
   "ge_system_oil_rob_at_sb_eng": "4100Ltrs",
   "etd_from_berth": "UTC",
-
-
   "position_at_sb_eng_latitude": "29-59.2N",
   "position_at_sb_eng_longitude": "123-10.4E",
   "displacement_mt": "39340.7",

@@ -23,6 +23,10 @@ class NoonReportMapper:
 
             # Perform mapping
             for key, value in parsed_mail.items():
+
+                if value is None or value == "" or value == "0" or value == 0:           # To skip null values
+                    continue
+
                 if key in standard_data:
                     mapped_key = standard_data[key]
                     final_mapping[mapped_key] = value
