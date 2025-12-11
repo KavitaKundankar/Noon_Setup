@@ -37,11 +37,13 @@ class Database:
             self.schema = os.getenv("DB3_SCHEMA")
             self.table = os.getenv("DB3_TABLE")
 
+        # Ship table DB
         elif db_key == "DB4":
             self.name = os.getenv("DB4_NAME")
             self.schema = os.getenv("DB4_SCHEMA")
             self.table = os.getenv("DB4_TABLE")
         
+        # Mapped DB final
         elif db_key == "DB5":
             self.name = os.getenv("DB5_NAME")
             self.schema = os.getenv("DB5_SCHEMA")
