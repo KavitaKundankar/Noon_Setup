@@ -196,6 +196,95 @@
   "me_cyl_oil_cons_last_report_high_sulphur_fuel_oil": "Total_ME_CYL_Oil_Consumed_High_Sulphur",
   "me_cyl_oil_cons_last_report_low_sulphur_fuel_oil": "Total_ME_CYL_Oil_Consumed_Low_Sulphur",
   "me_cyl_oil_rob_noon_high_sulphur_fuel_oil": "Remaining_On_Board_ME_CYL_OIL_High_Sulphur_FO",
-  "me_cyl_oil_rob_noon_low_sulphur_fuel_oil": "Remaining_On_Board_ME_CYL_OIL_Low_Sulphur_FO"
+  "me_cyl_oil_rob_noon_low_sulphur_fuel_oil": "Remaining_On_Board_ME_CYL_OIL_Low_Sulphur_FO",
+
+  "me_system_oil_rob_at_noon" : "Remaining_On_Board_ME_System_Oil",
+  "ge_system_oil_rob_at_noon" : "Remaining_On_Board_AE_System_Oil",
+  "displacement": "Displacement",
+  "wind_relative_direction": "Wind_Relative_Direction",
+  "arrival_port_name" : "Next_Port",
+  "arrival_port_code": "Next_Port_Code",
+  "time_at_sb_eng_utc" : "Report_Date_Time",
+  "arrival_draft_fore": "Draft_FWD",
+  "arrival_draft_aft": "Draft_AFT",
+  "arrival_draft_mid": "Draft_Mid",
+  "steaming_dist_last_report_to_sb_eng" : "Distance",
+  "steaming_time_last_report_to_sb_eng" : "ME_Running_Hrs",
+  "average_speed_last_report_to_sb_eng" : "Avg_Speed",
+  "total_steaming_dist_r_up_eng_to_sb_eng" : "Dist_RuP_Eng_To_SBE_Engine",
+  "total_steaming_time_r_up_eng_to_sb_eng" : "Time_RuP_Eng_To_SBE_Engine",
+  "average_rpm_last_report_to_sb_eng" : "Avg_RPM",
+  "average_me_pct_mcr_last_report_to_sb_eng" : "Avg_MCR",
+  "average_me_power_last_report_to_sb_eng" : "Avg_ME_Power",
+  "average_slip_last_report_to_sb_eng" : "Avg_Slip",
+
+
+  "fo_rob_at_sb_eng_sulphur_over1.0": "Remaining_On_Board_HFO_In_MT",
+  "fo_rob_at_sb_eng_sulphur_max1.0": "Remaining_On_Board_LSFO_In_MT",
+  "fo_rob_at_sb_eng_sulphur_max0.5": "Remaining_On_Board_VLSFO_In_MT",
+  "fo_rob_at_sb_eng_sulphur_max0.1": "Remaining_On_Board_ULSFO_In_MT",
+  "fo_rob_at_sb_eng_sulphur_ttl": "Total_FO_Remaining_On_Board_In_MT",
+  
+  "me_fo_cons_last_report_to_sb_eng_sulphur_over1.0": "Total_HFOME_Consumed_In_MT",
+  "me_fo_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSFOME_Consumed_In_MT",
+  "me_fo_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_VLSFOME_Consumed_In_MT",
+  "me_fo_cons_last_report_to_sb_eng_sulphur_max0.1": "Total_ULSFOME_Consumed_In_MT",
+  "me_fo_cons_last_report_to_sb_eng_sulphur_ttl": "Total_ME_Consumed_In_MT",
+
+  "ae_fo_cons_last_report_to_sb_eng_sulphur_over1.0": "Total_HFOAE_Consumed_In_MT",
+  "ae_fo_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSFOAE_Consumed_In_MT",
+  "ae_fo_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_VLSFOAE_Consumed_In_MT",
+  "ae_fo_cons_last_report_to_sb_eng_sulphur_max0.1": "Total_ULSFOAE_Consumed_In_MT",
+  "ae_fo_cons_last_report_to_sb_eng_sulphur_ttl": "Total_AE_Consumed_In_MT",
+
+  "boiler_fo_cons_last_report_to_sb_eng_sulphur_over1.0": "Total_HFOBLR_Consumed_In_MT",
+  "boiler_fo_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSFOBLR_Consumed_In_MT",
+  "boiler_fo_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_VLSFOBLR_Consumed_In_MT",
+  "boiler_fo_cons_last_report_to_sb_eng_sulphur_max0.1": "Total_ULSFOBLR_Consumed_In_MT",
+  "boiler_fo_cons_last_report_to_sb_eng_sulphur_ttl": "Total_BLR_Consumed_In_MT",
+
+  "do_rob_at_sb_eng_sulphur_over0.5": "Remaining_On_Board_MDO_Over(0.5)_In_MT",
+  "do_rob_at_sb_eng_sulphur_max0.5": "Remaining_On_Board_MDO_MAX(0.5)_In_MT",
+  "do_rob_at_sb_eng_sulphur_max1.0": "Remaining_On_Board_LSMDO_In_MT",
+  "do_rob_at_sb_eng_sulphur_ttl": "Total_DO_Remaining_On_Board_In_MT",
+
+  "me_do_cons_last_report_to_sb_eng_sulphur_over0.5": "Total_MDOME_Over(0.5)_Consumed_In_MT",
+  "me_do_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_MDOME_MAX(0.5)_Consumed_In_MT",
+  "me_do_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSMDOME_Consumed_In_MT",
+  "me_do_cons_last_report_to_sb_eng_sulphur_ttl": "Total_ME_DO_Consumed_In_MT",
+
+  "ae_do_cons_last_report_to_sb_eng_sulphur_over0.5": "Total_MDOAE_Over(0.5)_Consumed_In_MT",
+  "ae_do_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_MDOAE_MAX(0.5)_Consumed_In_MT",
+  "ae_do_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSMDOAE_Consumed_In_MT",
+  "ae_do_cons_last_report_to_sb_eng_sulphur_ttl": "Total_AE_DO_Consumed_In_MT",
+
+  "boiler_do_cons_last_report_to_sb_eng_sulphur_over0.5": "Total_MDOBLR_Over(0.5)_Consumed_In_MT",
+  "boiler_do_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_MDOBLR_MAX(0.5)_Consumed_In_MT",
+  "boiler_do_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSMDOBLR_Consumed_In_MT",
+  "boiler_do_cons_last_report_to_sb_eng_sulphur_ttl": "Total_BLR_DO_Consumed_In_MT",
+
+  "go_rob_at_sb_eng_sulphur_over0.5": "Remaining_On_Board_MGO_Over(0.5)_In_MT",
+  "go_rob_at_sb_eng_sulphur_max0.5": "Remaining_On_Board_MGO_MAX(0.5)_In_MT",
+  "go_rob_at_sb_eng_sulphur_max1.0": "Remaining_On_Board_LSMGO_In_MT",
+  "go_rob_at_sb_eng_sulphur_ttl": "Total_GO_Remaining_On_Board_In_MT",
+
+  "me_go_cons_last_report_to_sb_eng_sulphur_over0.5": "Total_MGOME_Over(0.5)_Consumed_In_MT",
+  "me_go_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_MGOME_MAX(0.5)_Consumed_In_MT",
+  "me_go_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSMGOME_Consumed_In_MT",
+  "me_go_cons_last_report_to_sb_eng_sulphur_ttl": "Total_ME_GO_Consumed_In_MT",
+
+  "ae_go_cons_last_report_to_sb_eng_sulphur_over0.5": "Total_MGOAE_Over(0.5)_Consumed_In_MT",
+  "ae_go_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_MGOAE_MAX(0.5)_Consumed_In_MT",
+  "ae_go_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSMGOAE_Consumed_In_MT",
+  "ae_go_cons_last_report_to_sb_eng_sulphur_ttl": "Total_AE_GO_Consumed_In_MT",
+
+  "boiler_go_cons_last_report_to_sb_eng_sulphur_over0.5": "Total_MGOBLR_Over(0.5)_Consumed_In_MT",
+  "boiler_go_cons_last_report_to_sb_eng_sulphur_max0.5": "Total_MGOBLR_MAX(0.5)_Consumed_In_MT",
+  "boiler_go_cons_last_report_to_sb_eng_sulphur_max1.0": "Total_LSMGOBLR_Consumed_In_MT",
+  "boiler_go_cons_last_report_to_sb_eng_sulphur_ttl": "Total_BLR_GO_Consumed_In_MT",
+
+ "me_system_oil_rob_at_sb_eng_ltrs": "Remaining_On_Board_ME_System_Oil",
+ "ge_system_oil_rob_at_sb_eng_ltrs": "Remaining_On_Board_AE_System_Oil",
+ "position_at_sb_eng": "Vessel_Position"
 
 }
