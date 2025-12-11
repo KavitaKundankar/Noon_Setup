@@ -19,4 +19,5 @@ def get_standard_keys(tenant):
     standard_keys_row = cur.fetchone()
     standard_keys = standard_keys_row[0] if standard_keys_row else "{}"
 
+    db.put_conn(conn)
     return standard_keys

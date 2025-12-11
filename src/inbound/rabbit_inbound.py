@@ -3,6 +3,10 @@ import json
 from logger_config import logger
 from inbound.base import InboundSource
 from db_connection.imo_loader import get_imo
+from db_connection.vessel_id import get_id
+from db_connection.mapping_db_saver import save_noon_parsing_report
+from mapping.mapping_db import build_noon_parsing_payload
+
 
 class RabbitMQInbound(InboundSource):
 
@@ -46,7 +50,15 @@ class RabbitMQInbound(InboundSource):
             parsed = self.parser.parse(mail_body, tenant, vessel_imo)
             mapped = self.mapper.map(parsed, tenant, vessel_imo, name)
 
-            logger.info(f"Message processed for tenant {tenant}")
+            vessel_id = get_id(vessel_imo)
+            print("vessel_id", vessel_id)
+
+            payload = build_noon_parsing_payload(mapped, tenant, vessel_id, mail_body, name)
+
+            if payload:
+                save_noon_parsing_report(payload)
+
+            logger.info(f"Message processed & saved for tenant {tenant}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
         except Exception as e:

@@ -8,14 +8,17 @@ from config import BASE_DIR
 from db_connection.prompt_loader import get_tenant_prompt
 import json
 import toon_python as toon
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class NoonReportParser:
 
     def __init__(self, api_key):
 
+        Gemini_model = os.getenv("Gemini_model")
         genai.configure(api_key=api_key)
-
-        self.model = genai.GenerativeModel("models/gemini-2.5-flash-lite")
+        self.model = genai.GenerativeModel(Gemini_model)
         
 
     def parse(self, body, tenant, imo):
