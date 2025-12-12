@@ -40,7 +40,8 @@ class RabbitMQInbound(InboundSource):
         processed_msg = self._process_message(raw_msg)
         logger.info(f"Received message for tenant {processed_msg['tenant']}")
 
-        mail_body = processed_msg["body"]
+        mail_body = f"Subject: {processed_msg['subject']}\n Mail_body : {processed_msg['body']}"
+
         tenant = processed_msg["tenant"]
 
         try:

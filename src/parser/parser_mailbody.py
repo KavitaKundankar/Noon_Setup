@@ -46,9 +46,11 @@ class NoonReportParser:
 
 
         result1 = toon.encode(body)
+        
         final_prompt += f"EMAIL CONTENT:\n{result1}"
 
         response = self.model.generate_content(final_prompt)
+
         logger.info(f"Token usage: {response.usage_metadata}")
 
         cleaned = re.sub(r"^```json\s*|\s*```$", "", response.text.strip())

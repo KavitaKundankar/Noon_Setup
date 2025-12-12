@@ -1,27 +1,25 @@
-# Python
+# Python cache
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
+
+# Virtual environments
 venv/
-ENV/
-env.bak/
-venv.bak/
+env/
 
 # Environment variables
 .env
 
-# VS Code
+# VS Code settings
 .vscode/
 
 # Logs
 *.log
 
-# Output JSON files
-parser/outputs/
+# Generated output files (parsed/mapped JSON)
+# src/parser/parsed_outputs/
+# src/mapping/mapped_outputs/
+# src/mapping/new_generated_keys/
 
-# OS files
+# OS system files
 .DS_Store
 Thumbs.db
