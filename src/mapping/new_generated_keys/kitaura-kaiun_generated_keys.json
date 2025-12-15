@@ -1,1 +1,14 @@
-{}
+{
+    "report_type_details_fuel_type_1": "HSFO",
+    "report_type_details_fuel_type_2": "VLSFO(RME-RMK)",
+    "report_type_details_fuel_type_3": "VLSFO(RMA-RMD)",
+    "report_type_details_fuel_type_4": "ULSFO",
+    "report_type_details_fuel_type_5": "MSDO",
+    "report_type_details_fuel_type_6": "LSDO",
+    "report_type_details_fuel_type_7": "MSGO",
+    "report_type_details_fuel_type_8": "LSGO",
+    "report_type_details_fuel_type_9": "Bioblend",
+    "report_type_details_wind_speed": "12knots",
+    "report_type_details_wind_beaufort_number": "4 Beaufort Number",
+    "report_type_details_wind_direction": "NW"
+}
