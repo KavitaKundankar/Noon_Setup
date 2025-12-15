@@ -1,5 +1,3 @@
-# src/inbound/callback_handler.py
-
 import json
 import time
 import re
