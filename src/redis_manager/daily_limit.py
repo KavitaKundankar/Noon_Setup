@@ -38,6 +38,20 @@ class DailyLimitManager:
             logger.warning(
                 f"Daily parsing limit reached ({self.max_daily_limit}/day)."
             )
+            self.redis.set(
+                name="daily_limit_key",
+                value=True,
+                ex=self._seconds_until_midnight()   # TTL till midnight
+            )
             
 
-        return True
+        def setkey(self, ttl):
+            self.redis.set(
+                name="daily_limit_key",
+                value=False,
+                ex=ttl   # TTL till midnight
+            )
+
+        def key_exist(self):
+            return self.redis.exists("daily_limit_key"), count
+

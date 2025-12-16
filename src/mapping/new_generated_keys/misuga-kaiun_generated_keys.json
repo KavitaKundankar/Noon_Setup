@@ -1,10 +1,18 @@
 {
-    "go_rob_at_sb_eng_sulphur_max0.1": "175.65",
-    "me_cyl_oil_rob_at_sb_eng_high_sulphur_fuel_oil": "17489",
-    "me_cyl_oil_rob_at_sb_eng_low_sulphur_fuel_oil": "17562",
+    "go_rob_at_sb_eng_sulphur_max0.1": "153.06",
+    "me_cyl_oil_rob_at_sb_eng_high_sulphur_fuel_oil": "12570Ltrs",
+    "me_cyl_oil_rob_at_sb_eng_low_sulphur_fuel_oil": "14217Ltrs",
     "fw_rob_at_sb_eng": "105",
     "go_consumption_max0.1": "2.55",
     "go_consumption_ttl": "2.55",
     "me_go_cons_last_report_to_sb_eng_sulphur_max0.1": "2.30",
-    "ae_go_cons_last_report_to_sb_eng_sulphur_max0.1": "0.25"
+    "ae_go_cons_last_report_to_sb_eng_sulphur_max0.1": "0.25",
+    "electrical_load_ae_no3": "330kW",
+    "average_me_pct_mcr": "75.56%",
+    "density_vlsfo": "0.891 SG",
+    "density_lsmgo": "0.85 SG",
+    "fo_consumption_from_last_report_sulphur_max0.5": "18.89",
+    "me_fo_consumption_from_last_report_sulphur_max0.5": "17.29",
+    "ae_fo_consumption_from_last_report_sulphur_max0.5": "1.60",
+    "position_at_completion_of_anchoring": "33-57.0N 131-41.2E"
 }

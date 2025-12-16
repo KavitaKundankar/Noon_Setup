@@ -1,5 +1,7 @@
 import pika
 from logger_config import logger
+# from redis_manager.daily_limit import setkey, key_exist
+from inbound import handle_callback
 
 
 class RabbitWorker:
@@ -11,8 +13,17 @@ class RabbitWorker:
         self.username = cfg["username"]
         self.password = cfg["password"]
         self.vhost = cfg.get("vhost", "/")
+        self.callback_func = handle_callback(callback_func)
 
-        self.callback_func = callback_func
+        # self.callback_func = callback_func
+        # self.callback_func = cat == False ? time.sleep(50000) : callback_func
+        # if (limit_flag == false || key_exist()== False):
+        #     self.setkey()
+        #     self.callback_func = callback_func
+        # if (limit_flag == false || key_exist()== True ):
+        #     self.callback_func = callback_func
+        # if (limit_flag == true) : 
+        #     sleep(00: 00 - current.time())
 
     def start(self):
         """Handles RabbitMQ connection and message consumption."""        

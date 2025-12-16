@@ -9,6 +9,9 @@ google-generativeai
 psycopg2-binary
 toon-python
 
+qdrant-client
+sentence-transformers
+
 
 
 # noon parsing project flow will be 

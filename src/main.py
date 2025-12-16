@@ -9,7 +9,7 @@ from mapping.mapping_mailbody import NoonReportMapper
 
 
 load_dotenv()
-
+cat = False
 def main():
     api_key = os.getenv("GEMINI_API_KEY")
 
@@ -21,7 +21,8 @@ def main():
     worker = RabbitMQInbound(
         rabbit_cfg,
         parser=parser,
-        mapper=mapper
+        mapper=mapper,
+        cat=cat
     )
 
     worker.start_worker()
