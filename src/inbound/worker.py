@@ -15,7 +15,7 @@ class RabbitWorker:
         self.callback_func = callback_func
 
     def start(self):
-        """Handles RabbitMQ connection and message consumption."""
+        """Handles RabbitMQ connection and message consumption."""        
         credentials = pika.PlainCredentials(self.username, self.password)
 
         connection = pika.BlockingConnection(

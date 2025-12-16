@@ -8,17 +8,20 @@ from db_connection.imo_loader import get_imo
 from db_connection.vessel_id import get_id
 from db_connection.mapping_db_saver import save_noon_parsing_report
 from mapping.mapping_db import build_noon_parsing_payload
+from config_loader import load_config
+
+config = load_config()
+
+max_daily_limit = config.get("daily_limit", 50)
 
 
 class CallbackHandler:
 
     REQUIRED_KEYS = ["sender", "tenant", "subject", "body"]
 
-    def __init__(self, parser, mapper, max_messages=5, max_daily_limit=40):
+    def __init__(self, parser, mapper, max_daily_limit=20):
         self.parser = parser
         self.mapper = mapper
-        self.max_messages = max_messages
-        self.current_count = 0
         self.daily_limit = DailyLimitManager(max_daily_limit)
 
     def process(self, ch, method, body):
@@ -32,20 +35,18 @@ class CallbackHandler:
         except Exception as e:
             logger.error(f"Invalid JSON: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
-            return False
+            return
 
         msg = {k: raw_msg.get(k) for k in self.REQUIRED_KEYS}
         tenant = msg.get("tenant")
 
         # -------------------------
-        # Daily limit check
+        # Daily limit check (Redis)
         # -------------------------
         if not self.daily_limit.can_parse_today():
-            logger.warning(
-                "Daily parsing limit reached. Requeuing message."
-            )
+            logger.warning("Daily parsing limit reached. Requeuing message.")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-            return False
+            return
 
         logger.info(f"Received message for tenant {tenant}")
 
@@ -83,11 +84,11 @@ class CallbackHandler:
         # Gemini quota handling
         # -------------------------
         except Exception as e:
-            error_msg = str(e)
+            error_msg = str(e).lower()
 
-            if "quota exceeded" in error_msg.lower() or "rate-limit" in error_msg.lower():
+            if "quota exceeded" in error_msg or "rate-limit" in error_msg:
                 retry_seconds = 60
-                match = re.search(r"retry in (\d+)", error_msg.lower())
+                match = re.search(r"retry in (\d+)", error_msg)
                 if match:
                     retry_seconds = int(match.group(1))
 
@@ -95,15 +96,9 @@ class CallbackHandler:
                     f"Gemini quota exceeded. Sleeping {retry_seconds}s before retry."
                 )
 
-                time.sleep(retry_seconds)
+                time.sleep(retry_seconds + 20)
                 ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-                return False
+                return
 
             logger.error(f"Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
-
-        # -------------------------
-        # Worker message limit
-        # -------------------------
-        self.current_count += 1
-        return self.current_count >= self.max_messages

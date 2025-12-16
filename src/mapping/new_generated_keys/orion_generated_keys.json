@@ -1,10 +1,13 @@
 {
     "report_type": "Sailing Report",
-    "relative_wind_direction": "H",
-    "relative_wind_force": 4,
-    "relative_current_direction": "G",
-    "relative_current_speed_knots": 0.4,
+    "relative_wind_direction": "A",
+    "relative_wind_force": 7,
+    "relative_current_direction": "H",
+    "relative_current_speed_knots": 0.3,
     "current_direction_text": "G",
     "current_speed_knots": 0.4,
-    "wind_force": 4
+    "wind_force": 4,
+    "relative_wind_direction_remarks": "F",
+    "relative_current_speed_knots_remarks": 0.3,
+    "ship_clock_retarded_hours": 1
 }

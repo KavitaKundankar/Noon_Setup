@@ -1,5 +1,3 @@
-# src/utils/daily_limit.py
-
 from datetime import datetime, timedelta
 from logger_config import logger
 from db_connection.redis_singleton import RedisClient
@@ -17,20 +15,18 @@ class DailyLimitManager:
         return int((midnight - now).total_seconds())
 
     def can_parse_today(self) -> bool:
-        """
-        Returns True if parsing is allowed today, False otherwise.
-        """
+
         today = datetime.utcnow().date()
         key = f"noon:parse:count:{today}"
 
         count = self.redis.get(key)
 
         if count is None:
-            # First message of the day
             self.redis.set(key, 1, ttl=self._seconds_until_midnight())
             return True
 
         count = int(count)
+        print("count : ", count)
 
         if count >= self.max_daily_limit:
             return False
@@ -42,5 +38,6 @@ class DailyLimitManager:
             logger.warning(
                 f"Daily parsing limit reached ({self.max_daily_limit}/day)."
             )
+            
 
         return True
