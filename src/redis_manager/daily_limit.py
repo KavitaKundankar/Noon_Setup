@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from logger_config import logger
 from db_connection.redis_singleton import RedisClient
 
+from redis_manager.daily_flag import DailyFlagManager
 
 class DailyLimitManager:
     def __init__(self, max_daily_limit: int):
@@ -38,20 +39,10 @@ class DailyLimitManager:
             logger.warning(
                 f"Daily parsing limit reached ({self.max_daily_limit}/day)."
             )
-            self.redis.set(
-                name="daily_limit_key",
-                value=True,
-                ex=self._seconds_until_midnight()   # TTL till midnight
-            )
-            
-
-        def setkey(self, ttl):
-            self.redis.set(
-                name="daily_limit_key",
-                value=False,
-                ex=ttl   # TTL till midnight
-            )
-
-        def key_exist(self):
-            return self.redis.exists("daily_limit_key"), count
-
+            # self.redis.set(
+            #     key="daily_limit_key",
+            #     value=1,
+            #     ttl=self._seconds_until_midnight()
+            # )
+        
+        return True

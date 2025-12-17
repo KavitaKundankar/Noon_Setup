@@ -1,7 +1,7 @@
 import pika
 from logger_config import logger
 # from redis_manager.daily_limit import setkey, key_exist
-from inbound import handle_callback
+from inbound.handle_callback import handle_callback
 
 
 class RabbitWorker:

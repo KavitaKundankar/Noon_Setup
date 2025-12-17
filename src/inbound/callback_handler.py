@@ -10,6 +10,9 @@ from db_connection.mapping_db_saver import save_noon_parsing_report
 from mapping.mapping_db import build_noon_parsing_payload
 from config_loader import load_config
 
+
+from redis_manager.daily_flag import DailyFlagManager
+
 config = load_config()
 
 max_daily_limit = config.get("daily_limit", 50)
@@ -19,7 +22,7 @@ class CallbackHandler:
 
     REQUIRED_KEYS = ["sender", "tenant", "subject", "body"]
 
-    def __init__(self, parser, mapper, max_daily_limit=20):
+    def __init__(self, parser, mapper):
         self.parser = parser
         self.mapper = mapper
         self.daily_limit = DailyLimitManager(max_daily_limit)
@@ -46,6 +49,7 @@ class CallbackHandler:
         if not self.daily_limit.can_parse_today():
             logger.warning("Daily parsing limit reached. Requeuing message.")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+            DailyFlagManager().setkey(1)
             return
 
         logger.info(f"Received message for tenant {tenant}")
