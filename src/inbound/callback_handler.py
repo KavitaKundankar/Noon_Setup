@@ -1,6 +1,7 @@
 import json
 import time
 import re
+from datetime import datetime
 from logger_config import logger
 
 from redis_manager.daily_limit import DailyLimitManager
@@ -84,25 +85,34 @@ class CallbackHandler:
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
+            time.sleep(120)
+
+            logger.info(f"Stopping execution at {datetime.now()}")
+
         # -------------------------
         # Gemini quota handling
         # -------------------------
         except Exception as e:
-            error_msg = str(e).lower()
+            error_msg = str(e)
 
-            if "quota exceeded" in error_msg or "rate-limit" in error_msg:
-                retry_seconds = 60
-                match = re.search(r"retry in (\d+)", error_msg)
+            # Check for quota/rate-limit errors (429 errors)
+            if "quota exceeded" in error_msg.lower() or "429" in error_msg or "rate" in error_msg.lower():
+                retry_seconds = 60  # Default retry time
+                
+                # Try to extract the retry delay from error message
+                match = re.search(r"retry in ([\d.]+)s", error_msg)
                 if match:
-                    retry_seconds = int(match.group(1))
-
+                    retry_seconds = int(float(match.group(1)))
+                
                 logger.warning(
-                    f"Gemini quota exceeded. Sleeping {retry_seconds}s before retry."
+                    f"Gemini API quota exceeded. Sleeping for {retry_seconds + 10}s before requeuing."
                 )
-
-                time.sleep(retry_seconds + 20)
+                
+                # Sleep and then requeue the message
+                time.sleep(retry_seconds + 10)
                 ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
                 return
 
+            # For other errors, log and requeue
             logger.error(f"Error processing message: {e}")
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)

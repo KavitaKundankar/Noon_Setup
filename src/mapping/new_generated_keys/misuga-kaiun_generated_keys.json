@@ -11,8 +11,9 @@
     "average_me_pct_mcr": "75.56%",
     "density_vlsfo": "0.891 SG",
     "density_lsmgo": "0.85 SG",
-    "fo_consumption_from_last_report_sulphur_max0.5": "18.89",
-    "me_fo_consumption_from_last_report_sulphur_max0.5": "17.29",
+    "fo_consumption_from_last_report_sulphur_max0.5": "18.96",
+    "me_fo_consumption_from_last_report_sulphur_max0.5": "16.75",
     "ae_fo_consumption_from_last_report_sulphur_max0.5": "1.60",
-    "position_at_completion_of_anchoring": "33-57.0N 131-41.2E"
+    "position_at_completion_of_anchoring": "33-57.0N 131-41.2E",
+    "temperature": "14"
 }

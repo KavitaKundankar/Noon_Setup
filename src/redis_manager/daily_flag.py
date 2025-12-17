@@ -20,6 +20,7 @@ class DailyFlagManager:
             value=value,
             ttl=self._seconds_until_1am()
         )
+        logger.info(f"Flag set for today : {value}")
 
     def getkey(self) -> int:
         value = self.redis.get("daily_limit_key")

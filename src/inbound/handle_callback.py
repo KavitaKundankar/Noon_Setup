@@ -17,22 +17,22 @@ def handle_callback(callback_func):
         key_exists = flg_manager.key_exist()
         key_value = flg_manager.getkey()
 
-        # --------------------------------------------------
+
         # 1. key does NOT exist
-        # --------------------------------------------------
+
         if not key_exists:
             flg_manager.setkey(0)   # false
             return callback_func(ch, method, properties, body)
 
-        # --------------------------------------------------
+
         # 2. key exists AND key is false
-        # --------------------------------------------------
+
         if key_exists and key_value == 0:
             return callback_func(ch, method, properties, body)
 
-        # --------------------------------------------------
+
         # 3. key exists AND key is true → sleep till 1 AM
-        # --------------------------------------------------
+
         if key_exists and key_value == 1:
             logger.warning("Daily limit reached. Sleeping until 1 AM.")
 
