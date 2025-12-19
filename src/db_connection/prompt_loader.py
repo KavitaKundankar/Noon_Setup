@@ -23,6 +23,10 @@ def get_tenant_prompt(tenant, imo):
     tenant_prompt = ""
     tenant_parsed_keys = ""
 
+    # Initialize vessel-specific variables
+    vessel_prompt = ""
+    vessel_keys = ""
+
     if tenant:
         logger.info(f"Searching tenant in DB: {tenant}")
 

@@ -74,7 +74,7 @@ class NoonReportMapper:
     def unmaped_save(self, unmapped: dict, tenant: str):
 
         # Directory where new keys are saved
-        dir_path = os.path.join(BASE_DIR, "mapping", "new_generated_keys")
+        dir_path = os.path.join(BASE_DIR, "mapping","Mapping_metadata","new_generated_keys")
         os.makedirs(dir_path, exist_ok=True)
 
         # File path inside that directory

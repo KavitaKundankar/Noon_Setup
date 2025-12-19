@@ -48,4 +48,4 @@ def get_imo(message):
         return db_imo, name
 
     logger.warning("No IMO match found in DB")
-    return None
+    return None, None

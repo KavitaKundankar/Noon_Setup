@@ -44,6 +44,11 @@ class CallbackHandler:
         msg = {k: raw_msg.get(k) for k in self.REQUIRED_KEYS}
         tenant = msg.get("tenant")
 
+        # Log warning if tenant is missing but continue processing
+        if not tenant:
+            logger.warning("Tenant not found in message. Will use standard prompt only.")
+            tenant = None  # Explicitly set to None for clarity
+
         # -------------------------
         # Daily limit check (Redis)
         # -------------------------
@@ -61,11 +66,23 @@ class CallbackHandler:
         # Main processing
         # -------------------------
         try:
-            vessel_imo, vessel_name = get_imo(mail_body)
+            result = get_imo(mail_body)
+            
+            # Handle case when vessel is not found - continue with None values
+            if result is None:
+                logger.warning(
+                    f"Vessel not found in database for tenant {tenant}. Using standard prompt only."
+                )
+                vessel_imo = None
+                vessel_name = None
+            else:
+                vessel_imo, vessel_name = result
 
+            # Parse and map (will use standard prompt if vessel_imo is None)
             parsed = self.parser.parse(mail_body, tenant, vessel_imo)
             mapped = self.mapper.map(parsed, tenant, vessel_imo, vessel_name)
 
+            # Get vessel_id (will return None if vessel_imo is None)
             vessel_id = get_id(vessel_imo)
 
             payload = build_noon_parsing_payload(
@@ -85,9 +102,9 @@ class CallbackHandler:
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
-            time.sleep(120)
+            # time.sleep(120)
 
-            logger.info(f"Stopping execution at {datetime.now()}")
+            # logger.info(f"Stopping execution at {datetime.now()}")
 
         # -------------------------
         # Gemini quota handling
