@@ -1,6 +1,6 @@
 from logger_config import logger
 
-def build_noon_parsing_payload(mapped, tenant, vessel_id, raw_mail_body, vessel_name):
+def build_noon_parsing_payload(mapped, tenant, vessel_id, raw_mail_body, vessel_name, parsed):
 
     try:
         data = {
@@ -10,7 +10,8 @@ def build_noon_parsing_payload(mapped, tenant, vessel_id, raw_mail_body, vessel_
             "vesselid": vessel_id,
             "report_date_time_utc": mapped.get("Report_Date_Time"),
             "reporttype": mapped.get("Report_Type"),
-            "raw_data": raw_mail_body
+            "raw_data": raw_mail_body,
+            "parsed_data" : parsed
         }
 
         return data

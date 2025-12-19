@@ -83,5 +83,17 @@
     "arrival_date_original": "03 DEC 2025",
     "arrival_berth_date_original": "03 DEC 2025",
     "eosp_date_original": "30 NOV 2025",
-    "arrival_port_original": "PROT KLANG, MALAYSIA"
+    "arrival_port_original": "PROT KLANG, MALAYSIA",
+    "vessel_type": "ACX CRYSTAL V320(S)",
+    "arrival_at_berth_date": "2025-12-03T00:00:00",
+    "draft_fore": "10.66M",
+    "engine_oil_yunic_eco_800_quantity": "814LTR",
+    "estimated_departure_date": "2025-12-03T22:30:00",
+    "notice_to_engine_room_date_time": "2025-12-02T21:20:00",
+    "nav_comm_steering_gear_tested_date_time": "2025-12-02T21:20:00",
+    "main_engine_tested_date_time": "2025-12-02T21:36:00",
+    "pilot_off_date_time": "2025-12-03T00:20:00",
+    "all_lines_madefast_fwe_date_time": "2025-12-03T00:24:00",
+    "primary_email": "ACXCrystal1@fleetmail.inmarsat.com",
+    "inm_c_email": "454878910@c12.stratosmobile.net"
 }

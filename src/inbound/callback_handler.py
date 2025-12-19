@@ -90,7 +90,8 @@ class CallbackHandler:
                 tenant,
                 vessel_id,
                 mail_body,
-                vessel_name
+                vessel_name,
+                parsed
             )
 
             if payload:

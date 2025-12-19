@@ -30,5 +30,6 @@
     "port_to_port_fuel_cons_vlsfo_rmd_boiler_cons": "0.8",
     "port_to_port_fuel_cons_vlsfo_rmd_total_cons": "963.9",
     "port_to_port_fuel_cons_lsdo_me_cons": "3.5",
-    "port_to_port_fuel_cons_lsdo_total_cons": "3.5"
+    "port_to_port_fuel_cons_lsdo_total_cons": "3.5",
+    "weather_report_type": "NOON REPORT"
 }

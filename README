@@ -1,0 +1,25 @@
+noon parsing project flow will be 
+1. take input data from RabbitMQ
+2. parse through llm
+3. parsed output mapp with standard keys 
+4. processed output save in db
+
+- correct way to take input from : rabbit 
+input contain mail body [Json Format] mandatory keys will be : ['body', 'subject', 'tenant'] 
+- all the vessal tracking and process tracking will be done by vessal imo & tenant
+- we setup db singleton pool 
+    - to fetch vessal Imo from db
+    - to store configurations
+    - and to store mapped result
+- then it will parse through gemini llm
+    - Standard prompt for all vessal 
+    - and for every tenant  we store keys json  so we can create same output keys everytime
+    - we send to llm --> standard_ptompt + vessal/tenant prompt + parse_key_json + mail_body
+    - parsed output will generated
+    - for any value if key is not given then it will generate new key for that
+    - and again new generated key will add to the parse_key_json and for mapping
+- then parsed_output will go for mapping 
+    - for mapping we will store { generated_key : mapping_key } through this way we will mapp all keys with standard parameters
+    - if mapping key not found then all those unmapped keys will append after the mapped keys at end 
+- setup monitoring and logging for all path 
+- standard prompt will applicatble for all new vessal onboarding

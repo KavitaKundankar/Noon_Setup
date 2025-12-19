@@ -15,9 +15,10 @@ def save_noon_parsing_report(data):
             report_date_time_utc,
             reporttype,
             raw_data,
+            parsed_data,
             report_id
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, gen_random_uuid())
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, gen_random_uuid())
         RETURNING id;
     """
 
@@ -35,7 +36,8 @@ def save_noon_parsing_report(data):
                 data.get("vesselid"),
                 data.get("report_date_time_utc"),
                 data.get("reporttype"),
-                data.get("raw_data")
+                psycopg2.extras.Json(data.get("raw_data")),
+                psycopg2.extras.Json(data.get("parsed_data"))
             )
         )
 
