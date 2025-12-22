@@ -16,15 +16,6 @@ class RabbitWorker:
         self.vhost = cfg.get("vhost", "/")
         self.callback_func = handle_callback(callback_func)
 
-        # self.callback_func = callback_func
-        # self.callback_func = cat == False ? time.sleep(50000) : callback_func
-        # if (limit_flag == false || key_exist()== False):
-        #     self.setkey()
-        #     self.callback_func = callback_func
-        # if (limit_flag == false || key_exist()== True ):
-        #     self.callback_func = callback_func
-        # if (limit_flag == true) : 
-        #     sleep(00: 00 - current.time())
 
     def start(self):
         """Handles RabbitMQ connection and message consumption."""        
@@ -57,6 +48,8 @@ class RabbitWorker:
             channel.start_consuming()
         except Exception as e:
             logger.error(f"Error while consuming: {e}")
+            # CONNECT TO RABBIT AND RESTART THE WORKER
+            self.start()
         finally:
             if channel.is_open:
                 channel.close()

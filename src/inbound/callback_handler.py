@@ -29,11 +29,7 @@ class CallbackHandler:
         self.daily_limit = DailyLimitManager(max_daily_limit)
 
     def process(self, ch, method, body):
-        """RabbitMQ callback execution"""
 
-        # -------------------------
-        # Decode message
-        # -------------------------
         try:
             raw_msg = json.loads(body.decode("utf-8"))
         except Exception as e:
